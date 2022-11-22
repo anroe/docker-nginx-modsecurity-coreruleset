@@ -1,11 +1,11 @@
-ARG NGINX_VERSION=1.20.2
+ARG NGINX_VERSION=1.22.1
 
 FROM nginx:$NGINX_VERSION-alpine
 
-ARG NGINX_VERSION=1.20.2
-ARG MODSECURITY_VERSION=v3.0.6
+ARG NGINX_VERSION=1.22.1
+ARG MODSECURITY_VERSION=v3.0.8
 ARG MODSECURITY_CONNECTOR_VERSION=v1.0.3
-ARG CRS_VERSION=3.3.2
+ARG CRS_VERSION=3.3.4
 
 RUN apk --update --no-cache add \
         gcc \
@@ -67,6 +67,7 @@ RUN apk --update --no-cache add \
         yajl \
         libstdc++ \
         libmaxminddb \
+        pcre \
     && rm -rf /var/lib/apt/lists/* \
     && chmod 755 /usr/lib/nginx/modules/ngx_http_modsecurity_module.so \
     && chmod -R 644 \
